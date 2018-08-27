@@ -1,4 +1,3 @@
-
 shinyServer(function(input,output,session){
   machine_data <- read.csv("mockdata.csv",stringsAsFactors = F, row.names = NULL)
   metaTable <- machine_data
@@ -103,6 +102,36 @@ shinyServer(function(input,output,session){
     valueBox(paste0("$",format(floor(sum(machine_data$Retail_Price, na.rm=TRUE)/length(machine_data$Model)), big.mark = ",")),"Average Value of Assets",icon = icon("dollar"),color = "green")
   })
   
+  # oem_plot_data_company <- reactive({
+  #  oem_plot_data_company
+  # })
+  # 
+  # oem_plot_data_type <- reactive({
+  #   oem_plot_data_type
+  # })
+  
+  # observe({oem_plot_data <- reactive({
+  #   select(machine_data, UID, OEM, Category)
+  #   })
+  #   })
+ 
+  # machine_data <- observe({
+  #   read.csv("mockdata.csv",stringsAsFactors= F, row.names = NULL)
+  # })
+  
+  # observeEvent( input$submit, {
+  #   current_data_frame <- get_data_frame( input$probeset_id , input$study_id , input$batch_id)
+  # vals <- reactiveValues(
+  #   keeprows = rep(TRUE, nrow( current_data_frame ))
+  # )
+  # 
+  # observe({reactive({source("dashboard.R")})})
+
+  #   oem_plot_data_reactive <- reactive({select(machine_data, UID, OEM, Category) 
+  # })
+  # 
+  # observeEvent(input$submit{
+  #              })
   output$oemplot <- renderPlot({
     if(input$selected == "Brand"){
       plot_company           
@@ -190,13 +219,23 @@ shinyServer(function(input,output,session){
   
   output$s.price <- renderText({
     paste("<B>Selling Price in USD($):</B>",
-    format(round(machine_data[input$mytable_rows_selected,c("Retail_Price")]*0.823), big.mark = ","))
+          format(round(machine_data[input$mytable_rows_selected,c("Retail_Price")]*0.9 - 34000), big.mark = ","))
   })
   
   output$b.price <- renderText({
     paste("<B>Buyback Price in USD($):</B>",
-    format(round(machine_data[input$mytable_rows_selected,c("Retail_Price")]*0.673), big.mark = ","))
+          format(round(machine_data[input$mytable_rows_selected,c("Retail_Price")]*0.7), big.mark = ","))
   })
+  
+  # output$s.price <- renderText({
+  #   paste("<B>Selling Price in USD($):</B>",
+  #   format(round(machine_data[input$mytable_rows_selected,c("Retail_Price")]*0.823), big.mark = ","))
+  # })
+  # 
+  # output$b.price <- renderText({
+  #   paste("<B>Buyback Price in USD($):</B>",
+  #   format(round(machine_data[input$mytable_rows_selected,c("Retail_Price")]*0.673), big.mark = ","))
+  # })
   
   output$edit_oem <- renderText({
     paste("<B>Asset Company:</B>",

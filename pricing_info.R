@@ -62,7 +62,7 @@ price.line.plot <- function(input_row){
     xlim((b - (.05 * list_avg_mean)), (p + (.05 * list_avg_mean))) +
     geom_text_repel(aes(label = paste0(labels,": ", "\n", "$", comma(list_avg)), hjust= 1.2, vjust= -2, check_overlap = TRUE)) +
     scale_x_continuous(labels = point) +
-    labs(x = "Price in USD", y = "") +
+    labs(x = "Price in USD", y = "", element_text(size = 18)) +
     theme(axis.text.x = element_blank()) +
     theme(axis.ticks = element_blank(), axis.text.y = element_blank()) +
     theme(panel.background = element_blank(), axis.line = element_blank())

@@ -1,5 +1,5 @@
 #Determine x axis limit for OEM barplot by finding the OEM with the max number of unique assets
-oem_plot_data <- select(metaTable, UID, OEM, Category)
+oem_plot_data <- select(machine_data, UID, OEM, Category)
 oem_plot_data <- unique(oem_plot_data)
 oem_plot_data$OEM <- as.character(oem_plot_data$OEM)
 oem_plot_data$Company_Sum <- as.numeric(ave(oem_plot_data$OEM, oem_plot_data$OEM, FUN = length))
