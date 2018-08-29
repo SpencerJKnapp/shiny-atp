@@ -28,7 +28,7 @@ dashboardPage(skin = "blue",
                                 selected = "All"))),
               fluidRow(
                 box(status = "primary", width = 6, plotOutput("oemplot")),
-                box(status = "success", width = 6, plotlyOutput("allAsset"))
+                box(status = "primary", width = 6, plotlyOutput("allAsset"))
               )),
       tabItem(tabName = "edit_asset",
               sidebarPanel(

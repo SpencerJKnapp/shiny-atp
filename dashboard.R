@@ -17,7 +17,7 @@ oem_plot_data_type <- oem_plot_data %>% group_by(Category) %>% summarise(top_2 =
 #Format OEM Plot
 plot_company <- ggplot(data=oem_plot_data_company, aes(x=oem_plot_data_company$OEM,
                                                        y=top)) +
-  geom_bar(stat="identity", fill="#3C8DBC", colour="#307096") +
+  geom_bar(stat="identity", fill="#148bd6", colour="#148bd6") +
   coord_flip() +
   ggtitle("Asset Overview") +
   xlab("Brand") +
@@ -28,7 +28,7 @@ plot_company <- ggplot(data=oem_plot_data_company, aes(x=oem_plot_data_company$O
         axis.title=element_text(size=14,face = "italic"))
 #Format Category Plot 
 plot_type <- ggplot(data=oem_plot_data_type, aes(x=oem_plot_data_type$Category, y=top_2)) +
-  geom_bar(stat="identity", fill="#3C8DBC", colour="#307096") +
+  geom_bar(stat="identity", fill="#148bd6", colour="#148bd6") +
   coord_flip() +
   ggtitle("Asset Overview") +
   xlab("Category") +
