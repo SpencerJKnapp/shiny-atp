@@ -1,6 +1,6 @@
 jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
 dashboardPage(skin = "blue",
-  dashboardHeader(title = "iDX"),
+  dashboardHeader(title = title, titleWidth = 200),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Home", tabName = "home", icon = icon("dashboard")),
@@ -12,7 +12,9 @@ dashboardPage(skin = "blue",
     )
   ),
   dashboardBody(
-    
+    tags$head(
+      tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+    ),
     tabItems(
       tabItem(tabName="home",fluidRow(
               valueBoxOutput("machineCount"),

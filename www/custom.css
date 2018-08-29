@@ -1,0 +1,45 @@
+/* header title font */
+.main-header .logo {
+    font-family: : "Sans Serif", serif;
+    font-weight: 100;
+    font-size: 18px;
+}
+
+/* background color of header (logo part) */
+.skin-blue .main-header .logo{
+    background-color: #148bd6;
+
+}
+
+/* change background color of header (logo part) when hover */
+.skin-blue .main-header .logo:hover{
+    background-color: #148bd6;
+}
+
+/* background color for remaining part of header */
+.skin-blue .main-header .navbar{
+    background-color: #148bd6;
+}
+
+/* main sidebar */
+    .skin-blue .main-sidebar {
+        background-color: #148bd6;
+}
+
+/* active sidebar menu item */
+    .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+        background-color:  #035b7f;
+        color: white;
+}
+
+/* sidebar menu items */ 
+    .skin-blue .main-sidebar .sidebar .sidebar-menu a{
+        background-color: #148bd6;
+        color: white;
+}
+
+/* sidebar menu items when mouse hovers */ 
+    .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+        background-color: #035b7f;
+        color: white;
+}
