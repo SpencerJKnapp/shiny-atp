@@ -1,7 +1,7 @@
 jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
 dashboardPage(skin = "blue",
   dashboardHeader(title = title, titleWidth = 200),
-  dashboardSidebar(
+  dashboardSidebar(width = 240,
     sidebarMenu(
       menuItem("Home", tabName = "home", icon = icon("dashboard")),
       menuItem("Add/Edit Assets", tabName = "add", icon = icon("inventory"),

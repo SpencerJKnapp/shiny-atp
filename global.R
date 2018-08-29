@@ -33,4 +33,4 @@ source("pricing_info.R")
 source("dashboard.R")
 
 #Add Logo to top left of Navbar
-title <- tags$img(src = "iDXLogo.png", height = '50', width = '150')
+title <- tags$img(src = "iDXLogo.png", height = '30', width = '100')
