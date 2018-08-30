@@ -58,7 +58,8 @@ shinyServer(function(input,output,session){
                OEM = c(machine_data[which(machine_data$UID==input$choose_uid),"OEM"][length(which(machine_data$UID==input$choose_uid))]),Currency = c("USD"),Make = c(input$edit_make_of_asset1),
                Type = c("Complete System"), Date = as.character(format(Sys.Date(), format="%m/%d/%Y")),
                Retail_Price = c(round(mean(na.omit(as.numeric(pricing_info[which(pricing_info$Model==(machine_data[which(machine_data$UID==input$choose_uid),"Model"][length(which(machine_data$UID==input$choose_uid))])),"PriceConvertedUSD"]))))),
-               Condition = c(input$edit_condition1))
+               Condition = c(input$edit_condition1), Buyback_Price = c(round(mean(na.omit(as.numeric(pricing_info[which(pricing_info$Model==input$name),"PriceConvertedUSD"])))*0.7)),
+               Sell_Price=c(round(mean(na.omit(as.numeric(pricing_info[which(pricing_info$Model==input$name),"PriceConvertedUSD"]))))*0.9)-34000)
   })
   
   observeEvent(input$edit_submit, {
@@ -130,7 +131,9 @@ shinyServer(function(input,output,session){
                OEM = c(input$company),Currency = c("USD"),Make = c(input$make_of_asset),
                Type = c("Complete System"), Date = as.character(format(Sys.Date(), format="%m/%d/%Y")),
                Retail_Price = c(round(mean(na.omit(as.numeric(pricing_info[which(pricing_info$Model==input$name),"PriceConvertedUSD"]))))),
-               Condition = c(input$condition))
+               Condition = c(input$condition), Buyback_Price = c(round(mean(na.omit(as.numeric(pricing_info[which(pricing_info$Model==input$name),"PriceConvertedUSD"])))*0.7)),
+               Sell_Price=c(round(mean(na.omit(as.numeric(pricing_info[which(pricing_info$Model==input$name),"PriceConvertedUSD"])))*0.9)-34000)
+    )
   })
   observeEvent(input$price, {
     tableReactive()
@@ -236,10 +239,10 @@ shinyServer(function(input,output,session){
       # can happen when deployed).
       tempReport <- file.path(tempdir(), "AssetTrackingReport.Rmd")
       file.copy("AssetTrackingReport.Rmd", tempReport, overwrite = TRUE)
-      
+
       # Set up parameters to pass to Rmd document
       params <- list(data=as.data.frame(machine_data[which(machine_data$UID==input$choose_uid), ]))
-      
+
       # Knit the document, passing in the `params` list, and eval it in a
       # child of the global environment (this isolates the code in the document
       # from the code in this app).
